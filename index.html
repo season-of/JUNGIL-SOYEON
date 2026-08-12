@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>윤정일 ♥ 성소연 결혼합니다</title>
+<style>
+  :root {
+    --burgundy: #7a2e3a;
+    --burgundy-light: #a6525f;
+    --cream: #fdfbf9;
+    --ink: #3a3230;
+    --line: #e8e0dc;
+    --pink-bg: #f7eeee;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+    background: #f2ede9;
+    color: var(--ink);
+    display: flex;
+    justify-content: center;
+  }
+
+  .invite {
+    width: 100%;
+    max-width: 480px;
+    background: var(--cream);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  section {
+    padding: 64px 28px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--burgundy);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  /* ---------- Cover (fullscreen photo) ---------- */
+  .cover {
+    height: 100svh;
+    min-height: 100svh;
+    padding: 0;
+    position: relative;
+    border-bottom: none;
+    background: #1a1a1a url('images/cover.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .cover-scroll {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+
+  .view-details {
+    margin: 0 auto;
+    background: none;
+    border: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: inherit;
+  }
+
+  .view-details .chevron {
+    font-size: 14px;
+    animation: bounce 1.6s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+  }
+
+  /* ---------- Image sections (full-bleed reference images) ---------- */
+  .img-section {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .img-section img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .img-map-buttons {
+    display: flex;
+    gap: 10px;
+    padding: 16px 28px 28px;
+  }
+
+  .img-map-buttons a {
+    flex: 1;
+    display: block;
+    text-align: center;
+    padding: 12px 0;
+    border: 1px solid var(--burgundy);
+    color: var(--burgundy);
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  footer {
+    padding: 40px 28px 60px;
+    text-align: center;
+    font-size: 12px;
+    color: #b3a9a3;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div class="invite">
+
+  <!-- Cover: fullscreen photo -->
+  <div class="cover">
+    <div class="cover-scroll">
+      <button class="view-details" id="viewDetailsBtn">
+        View Details
+        <span class="chevron">⌄</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Invitation + Map + Parking + Transit (image) -->
+  <section class="img-section" id="main-content">
+    <img src="images/invite-info.jpg" alt="초대의 말씀, 오시는 길, 주차 안내">
+    <div class="map-buttons img-map-buttons">
+      <a href="https://map.kakao.com/link/search/레이어스튜디오11" target="_blank">카카오맵으로 길찾기</a>
+      <a href="https://map.naver.com/p/search/레이어스튜디오11" target="_blank">네이버지도로 길찾기</a>
+    </div>
+  </section>
+
+  <!-- Gallery (image) -->
+  <section class="img-section">
+    <img src="images/gallery.jpg" alt="갤러리">
+  </section>
+
+  <footer>
+    윤정일 &amp; 성소연의 결혼식에<br>초대합니다
+  </footer>
+
+</div>
+
+<script>
+document.getElementById('viewDetailsBtn').addEventListener('click', function() {
+  document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>
