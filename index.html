@@ -259,71 +259,88 @@
     color: var(--ink);
   }
 
-  .account-toggle {
-    margin-top: 14px;
-    padding: 12px 24px;
-    border: 1px solid var(--burgundy);
-    color: var(--burgundy);
-    background: none;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: inherit;
-  }
-
-  .account-list {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-  }
-
-  .account-list.open {
-    max-height: 600px;
-  }
-
   .account-group {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
+    margin-top: 12px;
     text-align: left;
+    border-top: 1px solid var(--line);
   }
 
-  .account-group .side-label {
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: #999;
-    margin-bottom: 10px;
+  .account-group:last-child {
+    border-bottom: 1px solid var(--line);
   }
 
-  .account-row {
+  .side-toggle {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
-  }
-
-  .account-row .who {
-    font-size: 13px;
-    color: var(--ink);
-  }
-
-  .account-row .num {
-    font-size: 13px;
-    color: var(--ink);
-    letter-spacing: 0.3px;
-  }
-
-  .account-row button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    font-size: 11px;
-    border: 1px solid var(--line);
+    padding: 16px 4px;
     background: none;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  .side-toggle .side-label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     color: var(--ink);
-    border-radius: 3px;
+  }
+
+  .side-toggle .arrow {
+    font-size: 13px;
+    color: var(--ink);
+    transition: transform 0.25s ease;
+  }
+
+  .side-toggle.open .arrow {
+    transform: rotate(180deg);
+  }
+
+  .account-card-wrap {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .account-card-wrap.open {
+    max-height: 200px;
+  }
+
+  .account-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 4px 18px;
+  }
+
+  .account-card .info {
+    text-align: left;
+  }
+
+  .account-card .bank-num {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .account-card .name {
+    font-size: 12px;
+    color: #999;
+  }
+
+  .account-card button {
+    padding: 8px 16px;
+    font-size: 12px;
+    border: none;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 20px;
     cursor: pointer;
     font-family: inherit;
+    white-space: nowrap;
   }
 
   footer {
@@ -354,6 +371,26 @@
     <img src="images/invite-top.jpg" alt="초대의 말씀">
   </section>
 
+  <!-- History: 신랑측 -->
+  <section class="img-section">
+    <img src="images/history-groom.jpg" alt="History - 신랑측">
+  </section>
+
+  <!-- History: 신부측 -->
+  <section class="img-section">
+    <img src="images/history-bride.jpg" alt="History - 신부측">
+  </section>
+
+  <!-- Special Thanks to -->
+  <section class="img-section">
+    <img src="images/special-thanks.jpg" alt="Special Thanks to">
+  </section>
+
+  <!-- Calendar -->
+  <section class="img-section">
+    <img src="images/calendar.jpg" alt="Calendar">
+  </section>
+
   <!-- Real Kakao Map -->
   <section class="map-embed-section">
     <div id="kakao-map"></div>
@@ -381,27 +418,40 @@
     <img class="lightbox-img" src="images/gallery.jpg" alt="갤러리">
   </section>
 
+
   <!-- Account info -->
   <section class="account-section">
     <h3>마음 전하실 곳</h3>
-    <button class="account-toggle" id="accountToggle">계좌번호 보기</button>
-    <div class="account-list" id="accountList">
-      <div class="account-group">
-        <div class="side-label">신랑측</div>
-        <div class="account-row">
-          <span class="who">윤정일 (국민은행)</span>
-          <span class="num">653202-04-153823</span>
-          <button class="copy-btn" data-copy="653202-04-153823">복사</button>
+    <div class="account-group">
+      <button class="side-toggle" data-target="groom-account">
+        <span class="side-label">🤵 신랑측 계좌번호</span>
+        <span class="arrow">⌄</span>
+      </button>
+      <div class="account-card-wrap" id="groom-account">
+        <div class="account-card">
+          <div class="info">
+            <div class="bank-num">국민은행 653202-04-153823</div>
+            <div class="name">윤정일</div>
+          </div>
+          <button class="copy-btn" data-copy="653202-04-153823">복사하기</button>
         </div>
       </div>
-      <div class="account-group">
-        <div class="side-label">신부측</div>
-        <div class="account-row">
-          <span class="who">성소연 (국민은행)</span>
-          <span class="num">762902-01-300351</span>
-          <button class="copy-btn" data-copy="762902-01-300351">복사</button>
+    </div>
+    <div class="account-group">
+      <button class="side-toggle" data-target="bride-account">
+        <span class="side-label">👰 신부측 계좌번호</span>
+        <span class="arrow">⌄</span>
+      </button>
+      <div class="account-card-wrap" id="bride-account">
+        <div class="account-card">
+          <div class="info">
+            <div class="bank-num">국민은행 762902-01-300351</div>
+            <div class="name">성소연</div>
+          </div>
+          <button class="copy-btn" data-copy="762902-01-300351">복사하기</button>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -475,11 +525,13 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function() {
   });
 })();
 
-/* Account toggle */
-document.getElementById('accountToggle').addEventListener('click', function () {
-  var list = document.getElementById('accountList');
-  var open = list.classList.toggle('open');
-  this.textContent = open ? '계좌번호 닫기' : '계좌번호 보기';
+/* Account toggle (개별) */
+document.querySelectorAll('.side-toggle').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var target = document.getElementById(btn.getAttribute('data-target'));
+    var open = target.classList.toggle('open');
+    btn.classList.toggle('open', open);
+  });
 });
 
 /* Copy buttons */
