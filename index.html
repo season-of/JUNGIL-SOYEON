@@ -214,6 +214,40 @@
     visibility: visible;
   }
 
+  /* ---------- Individual Intro (정일 / 소연) ---------- */
+  .intro-section {
+    padding: 40px 28px 8px;
+    background: var(--cream);
+  }
+
+  .intro-section .name-label {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .intro-photos {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+  }
+
+  .intro-photos .small {
+    flex: 0 0 38%;
+  }
+
+  .intro-photos .large {
+    flex: 1;
+  }
+
+  .intro-photos img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
   /* ---------- Wedding film ---------- */
   .film-section {
     padding: 40px 28px;
@@ -376,9 +410,48 @@
     <img src="images/history-groom.jpg" alt="History - 신랑측">
   </section>
 
+  <!-- Intro: 정일 -->
+  <section class="intro-section">
+    <div class="name-label">정일</div>
+    <div class="intro-photos">
+      <div class="small"><img class="lightbox-img" src="images/intro-jungil-1.jpg" alt="정일"></div>
+      <div class="large"><img class="lightbox-img" src="images/intro-jungil-2.jpg" alt="정일"></div>
+    </div>
+  </section>
+
   <!-- History: 신부측 -->
   <section class="img-section">
     <img src="images/history-bride.jpg" alt="History - 신부측">
+  </section>
+
+  <!-- Intro: 소연 -->
+  <section class="intro-section">
+    <div class="name-label">소연</div>
+    <div class="intro-photos">
+      <div class="small"><img class="lightbox-img" src="images/intro-soyeon-1.jpg" alt="소연"></div>
+      <div class="large"><img class="lightbox-img" src="images/intro-soyeon-2.jpg" alt="소연"></div>
+    </div>
+  </section>
+
+  <!-- 정일 그리고 소연 -->
+  <section class="img-section">
+    <img src="images/intro-main.jpg" alt="정일 그리고 소연">
+  </section>
+
+  <!-- Our Story: 실내 -->
+  <section class="img-section">
+    <img src="images/ourstory-indoor-1.jpg" alt="Our Story 실내 1">
+  </section>
+  <section class="img-section">
+    <img src="images/ourstory-indoor-2.jpg" alt="Our Story 실내 2">
+  </section>
+  <section class="img-section">
+    <img src="images/ourstory-indoor-3.jpg" alt="Our Story 실내 3">
+  </section>
+
+  <!-- Our Story: 야외 -->
+  <section class="img-section">
+    <img src="images/ourstory-outdoor-1.jpg" alt="Our Story 야외">
   </section>
 
   <!-- Special Thanks to -->
@@ -454,10 +527,6 @@
     </div>
     </div>
   </section>
-
-  <footer>
-    윤정일 &amp; 성소연의 결혼식에<br>초대합니다
-  </footer>
 
 </div>
 
