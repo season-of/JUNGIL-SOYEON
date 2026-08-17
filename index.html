@@ -112,6 +112,21 @@
     height: auto;
   }
 
+  .flat-photo-wrap {
+    position: relative;
+  }
+
+  .flat-photo-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .lightbox-trigger {
+    position: absolute;
+    cursor: zoom-in;
+  }
+
   .img-map-buttons {
     display: flex;
     gap: 10px;
@@ -410,12 +425,12 @@
     <img src="images/history-groom.jpg" alt="History - 신랑측">
   </section>
 
-  <!-- Intro: 정일 -->
-  <section class="intro-section">
-    <div class="name-label">정일</div>
-    <div class="intro-photos">
-      <div class="small"><img class="lightbox-img" src="images/intro-jungil-1.jpg" alt="정일"></div>
-      <div class="large"><img class="lightbox-img" src="images/intro-jungil-2.jpg" alt="정일"></div>
+  <!-- Intro: 정일 (통 이미지 + 클릭 확대 오버레이) -->
+  <section class="img-section">
+    <div class="flat-photo-wrap">
+      <img src="images/intro-jungil-flat.jpg" alt="정일">
+      <div class="lightbox-trigger" data-photo="images/intro-jungil-1.jpg" style="left:8.23%; top:26.45%; width:34.42%; height:57.31%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-jungil-2.jpg" style="left:49.77%; top:0%; width:50.14%; height:83.87%;"></div>
     </div>
   </section>
 
@@ -424,12 +439,12 @@
     <img src="images/history-bride.jpg" alt="History - 신부측">
   </section>
 
-  <!-- Intro: 소연 -->
-  <section class="intro-section">
-    <div class="name-label">소연</div>
-    <div class="intro-photos">
-      <div class="small"><img class="lightbox-img" src="images/intro-soyeon-1.jpg" alt="소연"></div>
-      <div class="large"><img class="lightbox-img" src="images/intro-soyeon-2.jpg" alt="소연"></div>
+  <!-- Intro: 소연 (통 이미지 + 클릭 확대 오버레이) -->
+  <section class="img-section">
+    <div class="flat-photo-wrap">
+      <img src="images/intro-soyeon-flat.jpg" alt="소연">
+      <div class="lightbox-trigger" data-photo="images/intro-soyeon-1.jpg" style="left:8.23%; top:26.59%; width:34.42%; height:57.11%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-soyeon-2.jpg" style="left:49.77%; top:0%; width:50.14%; height:83.70%;"></div>
     </div>
   </section>
 
@@ -568,6 +583,13 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function() {
   imgs.forEach(function (img) {
     img.addEventListener('click', function () {
       openLightbox(img.src);
+    });
+  });
+
+  document.querySelectorAll('.lightbox-trigger').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.stopPropagation();
+      openLightbox(el.getAttribute('data-photo'));
     });
   });
 
