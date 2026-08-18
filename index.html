@@ -53,24 +53,74 @@
     text-transform: uppercase;
   }
 
-  /* ---------- Cover (fullscreen photo) ---------- */
+  /* ---------- Cover (fullscreen mailbox video) ---------- */
   .cover {
     height: 100svh;
     min-height: 100svh;
     padding: 0;
     position: relative;
     border-bottom: none;
-    background: #1a1a1a url('images/cover.jpg') center/cover no-repeat;
+    background: #1a1a1a;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
     overflow: hidden;
+    cursor: pointer;
+  }
+
+  .cover-poster,
+  .cover-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cover-poster {
+    z-index: 2;
+    transition: opacity 0.5s ease;
+  }
+
+  .cover-poster.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .cover-video {
+    z-index: 1;
+  }
+
+  .cover-hint {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100px;
+    z-index: 3;
+    text-align: center;
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    animation: hintPulse 1.8s ease-in-out infinite;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .cover-hint.is-hidden {
+    opacity: 0;
+  }
+
+  @keyframes hintPulse {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 0.9; transform: translateY(-4px); }
   }
 
   .cover-scroll {
     position: relative;
-    z-index: 2;
+    z-index: 4;
     padding-bottom: 40px;
     text-align: center;
   }
@@ -405,8 +455,20 @@
 
 <div class="invite">
 
-  <!-- Cover: fullscreen photo -->
-  <div class="cover">
+  <!-- Cover: mailbox video intro -->
+  <div class="cover" id="coverSection">
+    <img class="cover-poster" id="coverPoster" src="assets/mailbox-closed.jpg" alt="청첩장 표지 - 우체통">
+    <video
+      class="cover-video"
+      id="coverVideo"
+      src="assets/mailbox-open.mp4"
+      poster="assets/mailbox-closed.jpg"
+      muted
+      playsinline
+      webkit-playsinline="true"
+      preload="auto"
+    ></video>
+    <div class="cover-hint" id="coverHint">tap or swipe up</div>
     <div class="cover-scroll">
       <button class="view-details" id="viewDetailsBtn">
         View Details
@@ -598,9 +660,71 @@
 <button class="lightbox-close" id="lightboxClose">✕</button>
 
 <script>
-document.getElementById('viewDetailsBtn').addEventListener('click', function() {
+document.getElementById('viewDetailsBtn').addEventListener('click', function(e) {
+  e.stopPropagation();
   document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
 });
+
+/* Cover: mailbox open video, tap/swipe-up to play once */
+(function () {
+  var section = document.getElementById('coverSection');
+  var poster = document.getElementById('coverPoster');
+  var video = document.getElementById('coverVideo');
+  var hint = document.getElementById('coverHint');
+  var played = false;
+  var touchStartY = null;
+
+  function freezeOnLastFrame() {
+    // iOS Safari can snap back to the first frame right after 'ended' fires.
+    // Seeking just shy of the end and pausing keeps the last frame on screen.
+    var d = video.duration;
+    if (isFinite(d) && d > 0) {
+      try { video.currentTime = Math.max(0, d - 0.05); } catch (err) {}
+    }
+    video.pause();
+  }
+
+  function goToNextSection() {
+    setTimeout(function () {
+      var next = document.getElementById('main-content');
+      if (next) next.scrollIntoView({ behavior: 'smooth' });
+    }, 500);
+  }
+
+  function playOnce() {
+    if (played) return;
+    played = true;
+    hint.classList.add('is-hidden');
+    poster.classList.add('is-hidden');
+    var p = video.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(function () {
+        // Playback blocked - reset so the next tap can retry.
+        played = false;
+        poster.classList.remove('is-hidden');
+        hint.classList.remove('is-hidden');
+      });
+    }
+  }
+
+  video.addEventListener('ended', function () {
+    freezeOnLastFrame();
+    goToNextSection();
+  });
+
+  section.addEventListener('click', playOnce);
+
+  section.addEventListener('touchstart', function (e) {
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+
+  section.addEventListener('touchend', function (e) {
+    if (touchStartY === null) return;
+    var dy = touchStartY - e.changedTouches[0].clientY;
+    touchStartY = null;
+    if (dy > 30) playOnce();
+  }, { passive: true });
+})();
 
 /* Lightbox */
 (function () {
