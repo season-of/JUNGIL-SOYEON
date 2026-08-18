@@ -141,7 +141,7 @@
   }
 
   .view-details .chevron {
-    font-size: 14px;
+    font-size: 28px;
     animation: bounce 1.6s infinite;
   }
 
@@ -315,21 +315,26 @@
 
   /* ---------- Wedding film ---------- */
   .film-section {
-    padding: 40px 28px;
+    padding: 0;
     background: var(--cream);
   }
 
-  .film-section h3 {
-    text-align: center;
-    font-size: 15px;
-    letter-spacing: 2px;
-    margin-bottom: 18px;
-    color: var(--ink);
+  .film-bg-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .film-bg {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   .film-wrap {
-    position: relative;
-    width: 100%;
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    top: 21%;
     padding-top: 56.25%; /* 16:9 가로 영상 기준. 세로 영상이면 177.77%로 변경 */
     background: #e5dcd6;
     border-radius: 4px;
@@ -470,8 +475,7 @@
     ></video>
     <div class="cover-hint" id="coverHint">tap or swipe up</div>
     <div class="cover-scroll">
-      <button class="view-details" id="viewDetailsBtn">
-        View Details
+      <button class="view-details" id="viewDetailsBtn" aria-label="View Details">
         <span class="chevron">⌄</span>
       </button>
     </div>
@@ -491,8 +495,8 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/intro-jungil-flat.jpg" alt="정일">
-      <div class="lightbox-trigger" data-photo="images/intro-jungil-1.jpg" style="left:8.23%; top:26.45%; width:34.42%; height:57.31%;"></div>
-      <div class="lightbox-trigger" data-photo="images/intro-jungil-2.jpg" style="left:49.77%; top:0%; width:50.14%; height:83.87%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-jungil-1.jpg" style="left:8.23%; top:30.60%; width:34.42%; height:47.19%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-jungil-2.jpg" style="left:49.77%; top:8.96%; width:50.14%; height:69.02%;"></div>
     </div>
   </section>
 
@@ -505,8 +509,8 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/intro-soyeon-flat.jpg" alt="소연">
-      <div class="lightbox-trigger" data-photo="images/intro-soyeon-1.jpg" style="left:8.23%; top:26.59%; width:34.42%; height:57.11%;"></div>
-      <div class="lightbox-trigger" data-photo="images/intro-soyeon-2.jpg" style="left:49.77%; top:0%; width:50.14%; height:83.70%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-soyeon-1.jpg" style="left:8.23%; top:30.73%; width:34.42%; height:47.10%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-soyeon-2.jpg" style="left:49.68%; top:8.85%; width:50.32%; height:68.98%;"></div>
     </div>
   </section>
 
@@ -520,9 +524,11 @@
 
   <!-- Wedding Film -->
   <section class="film-section">
-    <h3>Wedding Film</h3>
-    <div class="film-wrap">
-      <iframe src="https://www.youtube.com/embed/MW7IBp1zAWA" title="Wedding Film" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="film-bg-wrap">
+      <img class="film-bg" src="images/film-bg.jpg" alt="Wedding Film">
+      <div class="film-wrap">
+        <iframe src="https://www.youtube.com/embed/MW7IBp1zAWA" title="Wedding Film" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </div>
   </section>
 
@@ -733,8 +739,40 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
   var closeBtn = document.getElementById('lightboxClose');
   var imgs = document.querySelectorAll('.lightbox-img');
 
+  var MIN_SCALE = 1;
+  var MAX_SCALE = 2;      // pinch / double-tap zoom ceiling
+  var TAP_ZOOM = 1.8;     // scale applied on double-tap
+  var scale = 1, panX = 0, panY = 0;
+
+  function clampPan() {
+    var w = overlayImg.offsetWidth * scale;
+    var h = overlayImg.offsetHeight * scale;
+    var maxPanX = Math.max(0, (w - window.innerWidth) / 2);
+    var maxPanY = Math.max(0, (h - window.innerHeight) / 2);
+    panX = Math.max(-maxPanX, Math.min(maxPanX, panX));
+    panY = Math.max(-maxPanY, Math.min(maxPanY, panY));
+  }
+
+  function applyTransform(withTransition) {
+    if (scale === 1 && panX === 0 && panY === 0) {
+      // back to the default state - let the CSS classes (open/closing) drive
+      // the transform so the entrance/exit animation stays untouched.
+      overlayImg.style.transition = '';
+      overlayImg.style.transform = '';
+      return;
+    }
+    overlayImg.style.transition = withTransition ? 'transform 0.25s ease' : 'none';
+    overlayImg.style.transform = 'translate(' + panX + 'px,' + panY + 'px) scale(' + scale + ')';
+  }
+
+  function resetZoom(withTransition) {
+    scale = 1; panX = 0; panY = 0;
+    applyTransform(withTransition);
+  }
+
   function openLightbox(src) {
     overlayImg.src = src;
+    resetZoom(false);
     overlay.classList.remove('closing');
     overlay.classList.add('open');
     closeBtn.classList.add('open');
@@ -748,6 +786,7 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
     document.body.style.overflow = '';
     setTimeout(function () {
       overlay.classList.remove('closing');
+      resetZoom(false);
     }, 240);
   }
 
@@ -764,23 +803,97 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
     });
   });
 
-  overlay.addEventListener('click', closeLightbox);
+  overlay.addEventListener('click', function () {
+    if (scale > 1.01) return; // tapping the backdrop while zoomed shouldn't close
+    closeLightbox();
+  });
   closeBtn.addEventListener('click', closeLightbox);
 
-  /* swipe down to dismiss */
-  var startY = 0;
+  /* Touch: 1-finger swipe-down to dismiss (at scale 1) or pan (when zoomed),
+     2-finger pinch to zoom, double-tap to toggle zoom in/out. */
+  var startY = 0, startX = 0;
+  var dragging = false;
+  var pinching = false;
+  var pinchStartDist = 1;
+  var pinchStartScale = 1;
+  var panStartX = 0, panStartY = 0;
+  var lastTapTime = 0;
+
+  function touchDist(t0, t1) {
+    var dx = t0.clientX - t1.clientX;
+    var dy = t0.clientY - t1.clientY;
+    return Math.max(1, Math.sqrt(dx * dx + dy * dy));
+  }
+
   overlay.addEventListener('touchstart', function (e) {
-    startY = e.touches[0].clientY;
+    if (e.touches.length === 2) {
+      pinching = true;
+      dragging = false;
+      pinchStartDist = touchDist(e.touches[0], e.touches[1]);
+      pinchStartScale = scale;
+      return;
+    }
+    if (e.touches.length === 1) {
+      pinching = false;
+      dragging = true;
+      startY = e.touches[0].clientY;
+      startX = e.touches[0].clientX;
+      panStartX = panX;
+      panStartY = panY;
+
+      var now = Date.now();
+      if (now - lastTapTime < 300) {
+        lastTapTime = 0;
+        dragging = false;
+        if (scale > 1.01) {
+          resetZoom(true);
+        } else {
+          scale = TAP_ZOOM;
+          panX = 0; panY = 0;
+          applyTransform(true);
+        }
+      } else {
+        lastTapTime = now;
+      }
+    }
   });
+
   overlay.addEventListener('touchmove', function (e) {
+    if (pinching && e.touches.length === 2) {
+      e.preventDefault();
+      var d = touchDist(e.touches[0], e.touches[1]);
+      scale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, pinchStartScale * (d / pinchStartDist)));
+      clampPan();
+      applyTransform(false);
+      return;
+    }
+    if (!dragging || e.touches.length !== 1) return;
+    var dx = e.touches[0].clientX - startX;
     var dy = e.touches[0].clientY - startY;
-    if (dy > 0) {
+
+    if (scale > 1.01) {
+      panX = panStartX + dx;
+      panY = panStartY + dy;
+      clampPan();
+      applyTransform(false);
+    } else if (dy > 0) {
+      overlayImg.style.transition = 'none';
       overlayImg.style.transform = 'translateY(' + dy + 'px) scale(' + Math.max(0.85, 1 - dy / 1000) + ')';
     }
   });
+
   overlay.addEventListener('touchend', function (e) {
+    if (pinching) {
+      pinching = false;
+      if (scale < 1.02) resetZoom(true);
+      return;
+    }
+    if (!dragging) return;
+    dragging = false;
+    if (scale > 1.01) return; // was panning a zoomed image, nothing more to do
+
     var dy = e.changedTouches[0].clientY - startY;
-    overlayImg.style.transform = '';
+    applyTransform(true);
     if (dy > 80) {
       closeLightbox();
     }
