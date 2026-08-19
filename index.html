@@ -334,7 +334,7 @@
     position: absolute;
     left: 28px;
     right: 28px;
-    top: 21%;
+    top: calc(21% + 50px);
     padding-top: 56.25%; /* 16:9 가로 영상 기준. 세로 영상이면 177.77%로 변경 */
     background: #e5dcd6;
     border-radius: 4px;
@@ -351,16 +351,27 @@
 
   /* ---------- Account info (마음 전하실 곳) ---------- */
   .account-section {
-    padding: 40px 28px 20px;
+    padding: 0;
     background: var(--cream);
     text-align: center;
   }
 
-  .account-section h3 {
-    font-size: 15px;
-    letter-spacing: 2px;
-    margin-bottom: 6px;
-    color: #9e000e;
+  .account-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .account-bg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .account-content {
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    top: 18%;
   }
 
   .account-group {
@@ -451,30 +462,6 @@
     white-space: nowrap;
   }
 
-  section.share-section {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 28px 40px;
-    border-bottom: none;
-  }
-
-  .kakao-share-btn {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px 0;
-    border: 1px solid #9e000e;
-    background: #9e000e;
-    color: #fff;
-    text-align: center;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    border-radius: 4px;
-    font-family: inherit;
-    cursor: pointer;
-  }
-
   footer {
     padding: 40px 28px 60px;
     text-align: center;
@@ -537,8 +524,8 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/intro-soyeon-flat.jpg" alt="소연">
-      <div class="lightbox-trigger" data-photo="images/intro-soyeon-1.jpg" style="left:8.23%; top:34.64%; width:34.42%; height:43.08%;"></div>
-      <div class="lightbox-trigger" data-photo="images/intro-soyeon-2.jpg" style="left:49.68%; top:14.71%; width:50.32%; height:63.02%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-soyeon-1.jpg" style="left:8.23%; top:30.73%; width:34.42%; height:47.10%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-soyeon-2.jpg" style="left:49.68%; top:8.85%; width:50.32%; height:68.98%;"></div>
     </div>
   </section>
 
@@ -546,7 +533,7 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/intro-main.jpg" alt="정일 그리고 소연">
-      <div class="lightbox-trigger" data-photo="images/intro-main-photo.jpg" style="left:0%; top:30.10%; width:100%; height:61.95%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-main-photo.jpg" style="left:0%; top:4%; width:100%; height:96%;"></div>
     </div>
   </section>
 
@@ -564,11 +551,11 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/ourstory-indoor-1.jpg" alt="Our Story 실내 1">
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo1.jpg" style="left:13.14%; top:9.56%; width:48.29%; height:29.82%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo2.jpg" style="left:58.28%; top:22.68%; width:32.93%; height:10.20%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo3.jpg" style="left:58.28%; top:33.57%; width:32.93%; height:10.24%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo4.jpg" style="left:58.28%; top:44.46%; width:32.93%; height:10.24%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo5.jpg" style="left:0%; top:68.89%; width:100%; height:27.08%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo1.jpg" style="left:13.51%; top:8.42%; width:47.18%; height:30.13%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo2.jpg" style="left:62.35%; top:21.71%; width:30.62%; height:10.22%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo3.jpg" style="left:62.35%; top:32.75%; width:30.62%; height:10.15%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo4.jpg" style="left:62.35%; top:43.74%; width:30.62%; height:10.22%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo5.jpg" style="left:0%; top:61.80%; width:100%; height:38.20%;"></div>
     </div>
   </section>
   <section class="img-section">
@@ -617,12 +604,12 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/ourstory-outdoor-2.jpg" alt="Our Story 야외 2">
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-2.jpg" style="left:11.01%; top:3.92%; width:59.57%; height:16.91%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-1.jpg" style="left:65.13%; top:1.47%; width:29.51%; height:8.38%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo6.jpg" style="left:0%; top:22.69%; width:100%; height:24.41%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo7.jpg" style="left:0%; top:51.00%; width:88.62%; height:11.15%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-1.jpg" style="left:20.44%; top:66.09%; width:38.30%; height:10.96%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-2.jpg" style="left:59.76%; top:66.09%; width:40.15%; height:10.96%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-2.jpg" style="left:11.01%; top:2.70%; width:59.57%; height:18.50%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-1.jpg" style="left:64.75%; top:0%; width:29.97%; height:9.18%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo6.jpg" style="left:0.09%; top:23.21%; width:99.91%; height:26.73%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo7.jpg" style="left:0%; top:52.97%; width:88.71%; height:12.23%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-1.jpg" style="left:20.44%; top:67.64%; width:38.76%; height:12.04%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-2.jpg" style="left:61.24%; top:67.64%; width:38.76%; height:12.04%;"></div>
     </div>
   </section>
 
@@ -652,42 +639,41 @@
 
   <!-- Account info -->
   <section class="account-section">
-    <h3>마음 전하실 곳</h3>
-    <div class="account-group">
-      <button class="side-toggle" data-target="groom-account">
-        <span class="side-label">🤵 신랑측 계좌번호</span>
-        <span class="arrow">⌄</span>
-      </button>
-      <div class="account-card-wrap" id="groom-account">
-        <div class="account-card">
-          <div class="info">
-            <div class="bank-num">국민은행 653202-04-153823</div>
-            <div class="name">윤정일</div>
+    <div class="account-wrap">
+      <img class="account-bg" src="images/account-bg.jpg" alt="마음 전하실 곳">
+      <div class="account-content">
+        <div class="account-group">
+          <button class="side-toggle" data-target="groom-account">
+            <span class="side-label">🤵 신랑측 계좌번호</span>
+            <span class="arrow">⌄</span>
+          </button>
+          <div class="account-card-wrap" id="groom-account">
+            <div class="account-card">
+              <div class="info">
+                <div class="bank-num">국민은행 653202-04-153823</div>
+                <div class="name">윤정일</div>
+              </div>
+              <button class="copy-btn" data-copy="653202-04-153823">복사하기</button>
+            </div>
           </div>
-          <button class="copy-btn" data-copy="653202-04-153823">복사하기</button>
+        </div>
+        <div class="account-group">
+          <button class="side-toggle" data-target="bride-account">
+            <span class="side-label">👰 신부측 계좌번호</span>
+            <span class="arrow">⌄</span>
+          </button>
+          <div class="account-card-wrap" id="bride-account">
+            <div class="account-card">
+              <div class="info">
+                <div class="bank-num">국민은행 762902-01-300351</div>
+                <div class="name">성소연</div>
+              </div>
+              <button class="copy-btn" data-copy="762902-01-300351">복사하기</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="account-group">
-      <button class="side-toggle" data-target="bride-account">
-        <span class="side-label">👰 신부측 계좌번호</span>
-        <span class="arrow">⌄</span>
-      </button>
-      <div class="account-card-wrap" id="bride-account">
-        <div class="account-card">
-          <div class="info">
-            <div class="bank-num">국민은행 762902-01-300351</div>
-            <div class="name">성소연</div>
-          </div>
-          <button class="copy-btn" data-copy="762902-01-300351">복사하기</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Kakao Share -->
-  <section class="share-section">
-    <button class="kakao-share-btn" id="kakaoShareBtn">카카오톡 공유</button>
   </section>
 
 </div>
@@ -835,28 +821,17 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
     });
   });
 
-  closeBtn.addEventListener('click', closeLightbox);
-
   var suppressClickUntil = 0;
-
-  /* Background tap closes the lightbox, but never while zoomed in, and not
-     right after a touch-driven zoom toggle (see suppressClickUntil below -
-     without it, the ghost 'click' that mobile browsers synthesize after a
-     double-tap-to-zoom-out would fire once scale is already back to 1 and
-     immediately close the whole lightbox). Touch devices settle drag/pan/
-     swipe entirely through the handlers below; this listener is the tap-
-     to-close path plus a desktop-mouse fallback. */
   overlay.addEventListener('click', function () {
     if (Date.now() < suppressClickUntil) return;
-    if (scale > 1.01) return;
+    if (scale > 1.01) return; // tapping the backdrop while zoomed shouldn't close
     closeLightbox();
   });
+  closeBtn.addEventListener('click', closeLightbox);
 
-  /* Touch: 1-finger drag pans when zoomed in; swipe-down dismisses only at
-     1x. 2-finger pinch zooms. Double-tap toggles zoom. Kept strictly
-     separate so panning is never mistaken for a dismiss swipe, and a
-     background tap never closes the zoomed-in view. */
-  var TAP_MOVE_THRESHOLD = 10; // px of movement before a touch counts as a drag, not a tap
+  /* Touch: 1-finger swipe-down to dismiss (at scale 1) or pan (when zoomed),
+     2-finger pinch to zoom, double-tap to toggle zoom in/out. */
+  var TAP_MOVE_THRESHOLD = 10;
   var startY = 0, startX = 0;
   var dragging = false;
   var moved = false;
@@ -923,7 +898,10 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
     if (!dragging || e.touches.length !== 1) return;
     var dx = e.touches[0].clientX - startX;
     var dy = e.touches[0].clientY - startY;
-    if (Math.abs(dx) > TAP_MOVE_THRESHOLD || Math.abs(dy) > TAP_MOVE_THRESHOLD) moved = true;
+
+    if (Math.abs(dx) > TAP_MOVE_THRESHOLD || Math.abs(dy) > TAP_MOVE_THRESHOLD) {
+      moved = true;
+    }
 
     if (scale > 1.01) {
       e.preventDefault();
@@ -942,8 +920,7 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
     if (pinching) {
       pinching = false;
       if (e.touches.length === 1) {
-        // a finger is still down right after the pinch ends - hand off to
-        // panning immediately instead of waiting for a brand new touchstart.
+        // one finger still down after the pinch ended - hand off to panning
         startDragFrom(e.touches[0]);
       }
       if (scale < 1.02) resetZoom(true);
@@ -953,8 +930,7 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
     dragging = false;
 
     if (scale > 1.01) {
-      // was panning a zoomed image, not trying to close - make sure no
-      // ghost click sneaks through and closes it.
+      // was panning a zoomed image; suppress the ghost click if it actually moved
       if (moved) suppressClickUntil = Date.now() + 400;
       return;
     }
@@ -987,29 +963,6 @@ document.querySelectorAll('.copy-btn').forEach(function (btn) {
     });
   });
 });
-
-/* Kakao share button - uses the native share sheet (KakaoTalk shows up there
-   on phones that have it installed). Swap this for Kakao.Share.sendDefault()
-   once a Kakao JavaScript key + registered domain are available. */
-var kakaoShareBtn = document.getElementById('kakaoShareBtn');
-if (kakaoShareBtn) {
-  kakaoShareBtn.addEventListener('click', function () {
-    var shareData = {
-      title: '정일 ♥ 소연 결혼합니다',
-      text: '2026.10.10 (토) 오후 1시, 레이어스튜디오11에서 정일과 소연의 결혼식에 초대합니다.',
-      url: window.location.href
-    };
-    if (navigator.share) {
-      navigator.share(shareData).catch(function () {});
-    } else {
-      navigator.clipboard.writeText(shareData.url).then(function () {
-        var original = kakaoShareBtn.textContent;
-        kakaoShareBtn.textContent = '링크가 복사되었습니다';
-        setTimeout(function () { kakaoShareBtn.textContent = original; }, 1500);
-      });
-    }
-  });
-}
 </script>
 
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1d4f9fb7d036666893afad1b329cd254&libraries=services&autoload=false"></script>
