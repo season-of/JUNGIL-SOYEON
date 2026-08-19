@@ -363,26 +363,6 @@
     color: #9e000e;
   }
 
-  /* ---------- Kakao share ---------- */
-  .share-section {
-    padding: 0 28px 40px;
-  }
-
-  .kakao-share-btn {
-    display: block;
-    width: 100%;
-    padding: 12px 0;
-    border: 1px solid #9e000e;
-    background: #9e000e;
-    color: #fff;
-    text-align: center;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    border-radius: 4px;
-    font-family: inherit;
-    cursor: pointer;
-  }
-
   .account-group {
     margin-top: 12px;
     text-align: left;
@@ -437,6 +417,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 4px 4px 18px;
+    min-height: 44px;
   }
 
   .account-card .info {
@@ -451,10 +432,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  .account-card {
-    min-height: 44px;
   }
 
   .account-card .name {
@@ -472,6 +449,30 @@
     cursor: pointer;
     font-family: inherit;
     white-space: nowrap;
+  }
+
+  section.share-section {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 28px 40px;
+    border-bottom: none;
+  }
+
+  .kakao-share-btn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 0;
+    border: 1px solid #9e000e;
+    background: #9e000e;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    font-family: inherit;
+    cursor: pointer;
   }
 
   footer {
@@ -545,7 +546,7 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/intro-main.jpg" alt="정일 그리고 소연">
-      <div class="lightbox-trigger" data-photo="images/intro-main-photo.jpg" style="left:0%; top:30.10%; width:100%; height:61.95%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-main-photo.jpg" style="left:0%; top:4%; width:100%; height:96%;"></div>
     </div>
   </section>
 
@@ -563,11 +564,11 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/ourstory-indoor-1.jpg" alt="Our Story 실내 1">
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo1.jpg" style="left:13.14%; top:9.56%; width:48.29%; height:29.82%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo2.jpg" style="left:58.28%; top:22.68%; width:32.93%; height:10.20%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo3.jpg" style="left:58.28%; top:33.57%; width:32.93%; height:10.24%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo4.jpg" style="left:58.28%; top:44.46%; width:32.93%; height:10.24%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo5.jpg" style="left:0%; top:68.89%; width:100%; height:27.08%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo1.jpg" style="left:13.51%; top:8.42%; width:47.18%; height:30.13%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo2.jpg" style="left:62.35%; top:21.71%; width:30.62%; height:10.22%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo3.jpg" style="left:62.35%; top:32.75%; width:30.62%; height:10.15%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo4.jpg" style="left:62.35%; top:43.74%; width:30.62%; height:10.22%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo5.jpg" style="left:0%; top:61.80%; width:100%; height:38.20%;"></div>
     </div>
   </section>
   <section class="img-section">
@@ -616,12 +617,12 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/ourstory-outdoor-2.jpg" alt="Our Story 야외 2">
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-2.jpg" style="left:11.01%; top:3.92%; width:59.57%; height:16.91%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-1.jpg" style="left:65.13%; top:1.47%; width:29.51%; height:8.38%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo6.jpg" style="left:0%; top:22.69%; width:100%; height:24.41%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo7.jpg" style="left:0%; top:51.00%; width:88.62%; height:11.15%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-1.jpg" style="left:20.44%; top:66.09%; width:38.30%; height:10.96%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-2.jpg" style="left:59.76%; top:66.09%; width:40.15%; height:10.96%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-2.jpg" style="left:11.01%; top:2.70%; width:59.57%; height:18.50%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-1.jpg" style="left:64.75%; top:0%; width:29.97%; height:9.18%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo6.jpg" style="left:0.09%; top:23.21%; width:99.91%; height:26.73%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo7.jpg" style="left:0%; top:52.97%; width:88.71%; height:12.23%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-1.jpg" style="left:20.44%; top:67.64%; width:38.76%; height:12.04%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-2.jpg" style="left:61.24%; top:67.64%; width:38.76%; height:12.04%;"></div>
     </div>
   </section>
 
@@ -681,7 +682,6 @@
           <button class="copy-btn" data-copy="762902-01-300351">복사하기</button>
         </div>
       </div>
-    </div>
     </div>
   </section>
 
