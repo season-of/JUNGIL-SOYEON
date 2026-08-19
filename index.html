@@ -537,8 +537,8 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/intro-soyeon-flat.jpg" alt="소연">
-      <div class="lightbox-trigger" data-photo="images/intro-soyeon-1.jpg" style="left:8.23%; top:30.73%; width:34.42%; height:47.10%;"></div>
-      <div class="lightbox-trigger" data-photo="images/intro-soyeon-2.jpg" style="left:49.68%; top:8.85%; width:50.32%; height:68.98%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-soyeon-1.jpg" style="left:8.23%; top:34.64%; width:34.42%; height:43.08%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-soyeon-2.jpg" style="left:49.68%; top:14.71%; width:50.32%; height:63.02%;"></div>
     </div>
   </section>
 
@@ -546,7 +546,7 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/intro-main.jpg" alt="정일 그리고 소연">
-      <div class="lightbox-trigger" data-photo="images/intro-main-photo.jpg" style="left:0%; top:4%; width:100%; height:96%;"></div>
+      <div class="lightbox-trigger" data-photo="images/intro-main-photo.jpg" style="left:0%; top:30.10%; width:100%; height:61.95%;"></div>
     </div>
   </section>
 
@@ -564,11 +564,11 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/ourstory-indoor-1.jpg" alt="Our Story 실내 1">
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo1.jpg" style="left:13.51%; top:8.42%; width:47.18%; height:30.13%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo2.jpg" style="left:62.35%; top:21.71%; width:30.62%; height:10.22%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo3.jpg" style="left:62.35%; top:32.75%; width:30.62%; height:10.15%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo4.jpg" style="left:62.35%; top:43.74%; width:30.62%; height:10.22%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo5.jpg" style="left:0%; top:61.80%; width:100%; height:38.20%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo1.jpg" style="left:13.14%; top:9.56%; width:48.29%; height:29.82%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo2.jpg" style="left:58.28%; top:22.68%; width:32.93%; height:10.20%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo3.jpg" style="left:58.28%; top:33.57%; width:32.93%; height:10.24%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo4.jpg" style="left:58.28%; top:44.46%; width:32.93%; height:10.24%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-indoor-1-photo5.jpg" style="left:0%; top:68.89%; width:100%; height:27.08%;"></div>
     </div>
   </section>
   <section class="img-section">
@@ -617,12 +617,12 @@
   <section class="img-section">
     <div class="flat-photo-wrap">
       <img src="images/ourstory-outdoor-2.jpg" alt="Our Story 야외 2">
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-2.jpg" style="left:11.01%; top:2.70%; width:59.57%; height:18.50%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-1.jpg" style="left:64.75%; top:0%; width:29.97%; height:9.18%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo6.jpg" style="left:0.09%; top:23.21%; width:99.91%; height:26.73%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo7.jpg" style="left:0%; top:52.97%; width:88.71%; height:12.23%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-1.jpg" style="left:20.44%; top:67.64%; width:38.76%; height:12.04%;"></div>
-      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-2.jpg" style="left:61.24%; top:67.64%; width:38.76%; height:12.04%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-2.jpg" style="left:11.01%; top:3.92%; width:59.57%; height:16.91%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo5-1.jpg" style="left:65.13%; top:1.47%; width:29.51%; height:8.38%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo6.jpg" style="left:0%; top:22.69%; width:100%; height:24.41%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo7.jpg" style="left:0%; top:51.00%; width:88.62%; height:11.15%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-1.jpg" style="left:20.44%; top:66.09%; width:38.30%; height:10.96%;"></div>
+      <div class="lightbox-trigger" data-photo="images/ourstory-outdoor-2-photo8-2.jpg" style="left:59.76%; top:66.09%; width:40.15%; height:10.96%;"></div>
     </div>
   </section>
 
@@ -835,16 +835,31 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
     });
   });
 
-  overlay.addEventListener('click', function () {
-    if (scale > 1.01) return; // tapping the backdrop while zoomed shouldn't close
-    closeLightbox();
-  });
   closeBtn.addEventListener('click', closeLightbox);
 
-  /* Touch: 1-finger swipe-down to dismiss (at scale 1) or pan (when zoomed),
-     2-finger pinch to zoom, double-tap to toggle zoom in/out. */
+  var suppressClickUntil = 0;
+
+  /* Background tap closes the lightbox, but never while zoomed in, and not
+     right after a touch-driven zoom toggle (see suppressClickUntil below -
+     without it, the ghost 'click' that mobile browsers synthesize after a
+     double-tap-to-zoom-out would fire once scale is already back to 1 and
+     immediately close the whole lightbox). Touch devices settle drag/pan/
+     swipe entirely through the handlers below; this listener is the tap-
+     to-close path plus a desktop-mouse fallback. */
+  overlay.addEventListener('click', function () {
+    if (Date.now() < suppressClickUntil) return;
+    if (scale > 1.01) return;
+    closeLightbox();
+  });
+
+  /* Touch: 1-finger drag pans when zoomed in; swipe-down dismisses only at
+     1x. 2-finger pinch zooms. Double-tap toggles zoom. Kept strictly
+     separate so panning is never mistaken for a dismiss swipe, and a
+     background tap never closes the zoomed-in view. */
+  var TAP_MOVE_THRESHOLD = 10; // px of movement before a touch counts as a drag, not a tap
   var startY = 0, startX = 0;
   var dragging = false;
+  var moved = false;
   var pinching = false;
   var pinchStartDist = 1;
   var pinchStartScale = 1;
@@ -857,6 +872,15 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
     return Math.max(1, Math.sqrt(dx * dx + dy * dy));
   }
 
+  function startDragFrom(touch) {
+    dragging = true;
+    moved = false;
+    startX = touch.clientX;
+    startY = touch.clientY;
+    panStartX = panX;
+    panStartY = panY;
+  }
+
   overlay.addEventListener('touchstart', function (e) {
     if (e.touches.length === 2) {
       pinching = true;
@@ -867,16 +891,12 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
     }
     if (e.touches.length === 1) {
       pinching = false;
-      dragging = true;
-      startY = e.touches[0].clientY;
-      startX = e.touches[0].clientX;
-      panStartX = panX;
-      panStartY = panY;
 
       var now = Date.now();
-      if (now - lastTapTime < 300) {
+      if (now - lastTapTime < 320) {
         lastTapTime = 0;
         dragging = false;
+        suppressClickUntil = now + 400;
         if (scale > 1.01) {
           resetZoom(true);
         } else {
@@ -886,9 +906,10 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
         }
       } else {
         lastTapTime = now;
+        startDragFrom(e.touches[0]);
       }
     }
-  });
+  }, { passive: true });
 
   overlay.addEventListener('touchmove', function (e) {
     if (pinching && e.touches.length === 2) {
@@ -902,34 +923,48 @@ document.getElementById('viewDetailsBtn').addEventListener('click', function(e) 
     if (!dragging || e.touches.length !== 1) return;
     var dx = e.touches[0].clientX - startX;
     var dy = e.touches[0].clientY - startY;
+    if (Math.abs(dx) > TAP_MOVE_THRESHOLD || Math.abs(dy) > TAP_MOVE_THRESHOLD) moved = true;
 
     if (scale > 1.01) {
+      e.preventDefault();
       panX = panStartX + dx;
       panY = panStartY + dy;
       clampPan();
       applyTransform(false);
     } else if (dy > 0) {
+      e.preventDefault();
       overlayImg.style.transition = 'none';
       overlayImg.style.transform = 'translateY(' + dy + 'px) scale(' + Math.max(0.85, 1 - dy / 1000) + ')';
     }
-  });
+  }, { passive: false });
 
   overlay.addEventListener('touchend', function (e) {
     if (pinching) {
       pinching = false;
+      if (e.touches.length === 1) {
+        // a finger is still down right after the pinch ends - hand off to
+        // panning immediately instead of waiting for a brand new touchstart.
+        startDragFrom(e.touches[0]);
+      }
       if (scale < 1.02) resetZoom(true);
       return;
     }
     if (!dragging) return;
     dragging = false;
-    if (scale > 1.01) return; // was panning a zoomed image, nothing more to do
+
+    if (scale > 1.01) {
+      // was panning a zoomed image, not trying to close - make sure no
+      // ghost click sneaks through and closes it.
+      if (moved) suppressClickUntil = Date.now() + 400;
+      return;
+    }
 
     var dy = e.changedTouches[0].clientY - startY;
     applyTransform(true);
-    if (dy > 80) {
+    if (moved && dy > 80) {
       closeLightbox();
     }
-  });
+  }, { passive: false });
 })();
 
 /* Account toggle (개별) */
