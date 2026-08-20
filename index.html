@@ -96,12 +96,16 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 100px;
+    top: 60.7%;
+    height: 3%;
     z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: #fff;
-    font-size: 21.5px;
-    letter-spacing: 2px;
+    font-size: 2.1vh;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     opacity: 0.85;
     animation: hintPulse 1.8s ease-in-out infinite;
@@ -110,6 +114,24 @@
   }
 
   .cover-hint.is-hidden {
+    opacity: 0;
+    animation: none;
+  }
+
+  .cover-arrows {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 3;
+    opacity: 0.85;
+    animation: hintPulse 1.8s ease-in-out infinite;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .cover-arrows.is-hidden {
     opacity: 0;
     animation: none;
   }
@@ -470,6 +492,7 @@
       webkit-playsinline="true"
       preload="auto"
     ></video>
+    <img class="cover-arrows" id="coverArrows" src="images/cover-arrows.png" alt="">
     <div class="cover-hint" id="coverHint">click</div>
   </div>
 
@@ -667,6 +690,7 @@
   var poster = document.getElementById('coverPoster');
   var video = document.getElementById('coverVideo');
   var hint = document.getElementById('coverHint');
+  var arrows = document.getElementById('coverArrows');
   var played = false;
   var touchStartY = null;
 
@@ -691,6 +715,7 @@
     if (played) return;
     played = true;
     hint.classList.add('is-hidden');
+    arrows.classList.add('is-hidden');
     poster.classList.add('is-hidden');
     var p = video.play();
     if (p && typeof p.catch === 'function') {
@@ -699,6 +724,7 @@
         played = false;
         poster.classList.remove('is-hidden');
         hint.classList.remove('is-hidden');
+        arrows.classList.remove('is-hidden');
       });
     }
   }
