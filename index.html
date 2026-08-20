@@ -100,7 +100,7 @@
     z-index: 3;
     text-align: center;
     color: #fff;
-    font-size: 16.5px;
+    font-size: 21.5px;
     letter-spacing: 2px;
     text-transform: uppercase;
     opacity: 0.85;
@@ -351,27 +351,16 @@
 
   /* ---------- Account info (마음 전하실 곳) ---------- */
   .account-section {
-    padding: 0;
+    padding: 40px 28px 20px;
     background: var(--cream);
     text-align: center;
   }
 
-  .account-wrap {
-    position: relative;
-    width: 100%;
-  }
-
-  .account-bg {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .account-content {
-    position: absolute;
-    left: 28px;
-    right: 28px;
-    top: 18%;
+  .account-section h3 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    color: #9e000e;
   }
 
   .account-group {
@@ -433,6 +422,9 @@
 
   .account-card .info {
     text-align: left;
+    min-width: 0;
+    flex: 1;
+    margin-right: 8px;
   }
 
   .account-card .bank-num {
@@ -448,6 +440,9 @@
   .account-card .name {
     font-size: 12px;
     color: #999;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .account-card button {
@@ -460,6 +455,7 @@
     cursor: pointer;
     font-family: inherit;
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   footer {
@@ -488,12 +484,7 @@
       webkit-playsinline="true"
       preload="auto"
     ></video>
-    <div class="cover-hint" id="coverHint">tap or swipe up</div>
-    <div class="cover-scroll">
-      <button class="view-details" id="viewDetailsBtn" aria-label="View Details">
-        <span class="chevron">⌄</span>
-      </button>
-    </div>
+    <div class="cover-hint" id="coverHint">click</div>
   </div>
 
   <!-- Invitation (image, top part) -->
@@ -639,40 +630,37 @@
 
   <!-- Account info -->
   <section class="account-section">
-    <div class="account-wrap">
-      <img class="account-bg" src="images/account-bg.jpg" alt="마음 전하실 곳">
-      <div class="account-content">
-        <div class="account-group">
-          <button class="side-toggle" data-target="groom-account">
-            <span class="side-label">🤵 신랑측 계좌번호</span>
-            <span class="arrow">⌄</span>
-          </button>
-          <div class="account-card-wrap" id="groom-account">
-            <div class="account-card">
-              <div class="info">
-                <div class="bank-num">국민은행 653202-04-153823</div>
-                <div class="name">윤정일</div>
-              </div>
-              <button class="copy-btn" data-copy="653202-04-153823">복사하기</button>
-            </div>
+    <h3>마음 전하실 곳</h3>
+    <div class="account-group">
+      <button class="side-toggle" data-target="groom-account">
+        <span class="side-label">🤵 신랑측 계좌번호</span>
+        <span class="arrow">⌄</span>
+      </button>
+      <div class="account-card-wrap" id="groom-account">
+        <div class="account-card">
+          <div class="info">
+            <div class="bank-num">국민은행 653202-04-153823</div>
+            <div class="name">윤정일 (윤근신, 김연숙)</div>
           </div>
-        </div>
-        <div class="account-group">
-          <button class="side-toggle" data-target="bride-account">
-            <span class="side-label">👰 신부측 계좌번호</span>
-            <span class="arrow">⌄</span>
-          </button>
-          <div class="account-card-wrap" id="bride-account">
-            <div class="account-card">
-              <div class="info">
-                <div class="bank-num">국민은행 762902-01-300351</div>
-                <div class="name">성소연</div>
-              </div>
-              <button class="copy-btn" data-copy="762902-01-300351">복사하기</button>
-            </div>
-          </div>
+          <button class="copy-btn" data-copy="653202-04-153823">복사하기</button>
         </div>
       </div>
+    </div>
+    <div class="account-group">
+      <button class="side-toggle" data-target="bride-account">
+        <span class="side-label">👰 신부측 계좌번호</span>
+        <span class="arrow">⌄</span>
+      </button>
+      <div class="account-card-wrap" id="bride-account">
+        <div class="account-card">
+          <div class="info">
+            <div class="bank-num">국민은행 762902-01-300351</div>
+            <div class="name">성소연 (성대영, 이경숙)</div>
+          </div>
+          <button class="copy-btn" data-copy="762902-01-300351">복사하기</button>
+        </div>
+      </div>
+    </div>
     </div>
   </section>
 
@@ -684,11 +672,6 @@
 <button class="lightbox-close" id="lightboxClose">✕</button>
 
 <script>
-document.getElementById('viewDetailsBtn').addEventListener('click', function(e) {
-  e.stopPropagation();
-  document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
-});
-
 /* Cover: mailbox open video, tap/swipe-up to play once */
 (function () {
   var section = document.getElementById('coverSection');
