@@ -96,8 +96,8 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 60.7%;
-    height: 3%;
+    top: 61%;
+    height: 3.8%;
     z-index: 3;
     display: flex;
     align-items: center;
@@ -105,10 +105,11 @@
     text-align: center;
     color: #fff;
     font-size: 2.1vh;
+    font-weight: 700;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    opacity: 0.85;
-    animation: hintPulse 1.8s ease-in-out infinite;
+    opacity: 0.9;
+    animation: clickBlink 0.9s ease-in-out infinite;
     pointer-events: none;
     transition: opacity 0.3s ease;
   }
@@ -126,7 +127,7 @@
     object-fit: cover;
     z-index: 3;
     opacity: 0.85;
-    animation: hintPulse 1.8s ease-in-out infinite;
+    animation: arrowFloat 1.6s ease-in-out infinite;
     pointer-events: none;
     transition: opacity 0.3s ease;
   }
@@ -136,9 +137,14 @@
     animation: none;
   }
 
-  @keyframes hintPulse {
-    0%, 100% { opacity: 0.4; transform: translateY(0); }
-    50% { opacity: 0.9; transform: translateY(-4px); }
+  @keyframes clickBlink {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 0.25; }
+  }
+
+  @keyframes arrowFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
   }
 
   /* ---------- Image sections (full-bleed reference images) ---------- */
